@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#a9d8f0" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <title>Blockhaven — a little world</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <main id="game">
+    <canvas id="world" aria-label="A 3D block world"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand-mark"><span class="brand-icon"><i></i><i></i><i></i><i></i></span><div><strong>BLOCKHAVEN</strong><small>YOUR LITTLE WORLD</small></div></div>
+      <div class="world-meta"><span class="live-dot"></span><span id="worldName">MEADOWLANDS</span><span class="meta-divider"></span><span id="clock">DAY 01 · 09:42</span></div>
+    </header>
+    <div class="coordinates"><span class="coord-icon">⌖</span><span id="coords">X 0&nbsp;&nbsp; Y 0&nbsp;&nbsp; Z 0</span></div>
+    <div class="crosshair" aria-hidden="true"><i></i><b></b></div>
+    <div class="target-name" id="targetName"></div>
+    <div class="toast" id="toast"></div>
+    <section class="welcome" id="welcome">
+      <div class="welcome-card">
+        <div class="eyebrow"><span></span> A WORLD, JUST FOR YOU</div>
+        <h1>Take a little<br><em>breather.</em></h1>
+        <p>Wander through the meadow. Make something wonderful. There’s no rush here.</p>
+        <button id="startButton" class="start-button"><span>Enter the world</span><b>↗</b></button>
+        <div class="welcome-foot"><span>✦</span> A tiny place to get lost</div>
+      </div>
+      <div class="welcome-orbit orbit-one"></div><div class="welcome-orbit orbit-two"></div>
+    </section>
+    <aside class="controls-hint" id="controlsHint">
+      <div class="hint-key"><span>W</span><span>A</span><span>S</span><span>D</span></div><div class="hint-copy">to wander</div><div class="hint-sep"></div><div class="mouse-hint"><span>↖</span></div><div class="hint-copy">look around</div><div class="hint-sep"></div><div class="hint-copy"><kbd>click</kbd> gather <span class="hint-plus">·</span> <kbd>right-click</kbd> build</div>
+    </aside>
+    <div class="selected-label" id="selectedLabel"><span class="selected-swatch"></span><span id="selectedName">Mossy grass</span></div>
+    <nav class="hotbar" id="hotbar" aria-label="Block inventory"></nav>
+    <div class="right-rail"><button class="icon-button" id="helpButton" title="Controls">?</button><button class="icon-button sound-button" id="soundButton" title="Toggle ambience">♫</button></div>
+    <section class="help-card" id="helpCard"><button class="close-help" id="closeHelp">×</button><div class="eyebrow">A FEW LITTLE THINGS</div><ul><li><kbd>W A S D</kbd><span>Move around</span></li><li><kbd>SPACE</kbd><span>Hop over things</span></li><li><kbd>CLICK</kbd><span>Gather a block</span></li><li><kbd>RIGHT CLICK</kbd><span>Place a block</span></li><li><kbd>1 — 6</kbd><span>Pick a block</span></li><li><kbd>ESC</kbd><span>Take a breather</span></li></ul></section>
+    <div class="mobile-controls" id="mobileControls"><div class="dpad"><button data-move="forward">↑</button><div><button data-move="left">←</button><button data-move="back">↓</button><button data-move="right">→</button></div></div><div class="mobile-actions"><button id="mobileJump">↑<small>JUMP</small></button><button id="mobileBuild">▧<small>PLACE</small></button><button id="mobileMine">⌕<small>GATHER</small></button></div></div>
+    <div class="pause-screen" id="pauseScreen"><div class="pause-card"><span class="pause-spark">✦</span><h2>Taking a moment?</h2><p>Your little world will be right here.</p><button class="start-button" id="resumeButton"><span>Back to wandering</span><b>↗</b></button></div></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
