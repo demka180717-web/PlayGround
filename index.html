@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#10141a" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 fill=%22%2310141a%22/><path d=%22M6 6h20v20H6z%22 fill=%22none%22 stroke=%22%23f35c4a%22/><text x=%2216%22 y=%2221%22 fill=%22%23f35c4a%22 text-anchor=%22middle%22 font-size=%2212%22 font-family=%22sans-serif%22 font-weight=%22900%22>NY</text></svg%3E" />
+  <title>NEON YARD — Уличная арена</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game">
+    <canvas id="scene" aria-label="3D арена"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">NY</span><span>NEON <b>YARD</b><small>UNDERGROUND FIGHT CLUB</small></span></div>
+      <div class="round-pill"><i></i> STREET ARENA <span>•</span> <b id="roundLabel">РАУНД 01</b></div>
+      <button class="sound" id="soundBtn" aria-label="Звук">♫ <span>ЗВУК</span></button>
+    </header>
+    <section class="hud">
+      <div class="fighter-card player-card">
+        <div class="fighter-name"><span>01</span> ТЫ <small>УЛИЧНЫЙ БОЕЦ</small></div>
+        <div class="health-track"><div id="playerHealth" class="health-fill player-fill"></div></div>
+        <div class="health-meta"><span>ВЫНОСЛИВОСТЬ</span><b id="playerHealthText">100</b></div>
+      </div>
+      <div class="versus">VS</div>
+      <div class="fighter-card enemy-card">
+        <div class="fighter-name"><span>02</span> <b id="enemyName">ТЕНЬ</b><small>СОПЕРНИК</small></div>
+        <div class="health-track"><div id="enemyHealth" class="health-fill enemy-fill"></div></div>
+        <div class="health-meta"><span>ВЫНОСЛИВОСТЬ</span><b id="enemyHealthText">100</b></div>
+      </div>
+    </section>
+    <div class="weapon-panel">
+      <span class="weapon-label">СНАРЯЖЕНИЕ</span>
+      <div class="weapon-list">
+        <button class="weapon active" data-weapon="knife"><span class="weapon-icon">⌁</span><span><b>НОЖ</b><small>БЫСТРЫЙ</small></span><kbd>1</kbd></button>
+        <button class="weapon" data-weapon="bat"><span class="weapon-icon bat-icon">╱</span><span><b>БИТА</b><small>СИЛЬНЫЙ</small></span><kbd>2</kbd></button>
+        <button class="weapon" data-weapon="board"><span class="weapon-icon board-icon">▰</span><span><b>ДОСКА</b><small>ОГЛУШЕНИЕ</small></span><kbd>3</kbd></button>
+      </div>
+    </div>
+    <div class="status-message" id="statusMessage">ВЫБЕРИ МОМЕНТ ДЛЯ АТАКИ</div>
+    <div class="controls-hint"><span>WASD</span> ДВИЖЕНИЕ <i>•</i> <span>ПРОБЕЛ</span> АТАКА <i>•</i> <span>SHIFT</span> РЫВОК</div>
+    <div class="mobile-controls" id="mobileControls">
+      <div class="stick-zone" id="stickZone"><div class="stick-base"><div class="stick-knob" id="stickKnob"></div></div><span>ДВИЖЕНИЕ</span></div>
+      <div class="mobile-actions"><button id="dodgeBtn" class="touch-action dodge-btn">↗<small>РЫВОК</small></button><button id="attackBtn" class="touch-action attack-btn"><span>УДАР</span><small>АТАКА</small></button></div>
+    </div>
+    <div class="overlay" id="introOverlay">
+      <div class="intro-card">
+        <div class="eyebrow"><span></span> НОЧНОЙ РАЙОН · 02:17</div>
+        <h1>УЛИЦА<br><em>НЕ ПРОЩАЕТ.</em></h1>
+        <p>Один на один в неоновой арене. Выбирай снаряжение, уклоняйся и найди слабое место соперника.</p>
+        <div class="intro-weapons"><span>01 <b>НОЖ</b> <small>скорость</small></span><span>02 <b>БИТА</b> <small>урон</small></span><span>03 <b>ДОСКА</b> <small>оглушение</small></span></div>
+        <button id="startBtn" class="primary-btn">ВЫЙТИ НА АРЕНУ <span>↗</span></button>
+        <div class="disclaimer">АРКАДНЫЙ БОЙ · СТИЛИЗОВАННЫЕ ЭФФЕКТЫ · БЕЗ ЖЕСТОКОСТИ</div>
+      </div>
+    </div>
+    <div class="overlay hidden" id="endOverlay">
+      <div class="intro-card end-card"><div class="eyebrow"><span></span> РАУНД ЗАВЕРШЁН</div><h1 id="endTitle">ПОБЕДА.</h1><p id="endCopy">Арена твоя. Готов к следующему?</p><div class="score-line"><span>ПОПАДАНИЯ</span><b id="hitCount">0</b><span>ВРЕМЯ</span><b id="fightTime">00:00</b></div><button id="restartBtn" class="primary-btn">ЕЩЁ РАУНД <span>↻</span></button></div>
+    </div>
+    <div class="toast" id="toast"></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
